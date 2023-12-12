@@ -1,20 +1,50 @@
-# techco-frontend-3504-g1
 
-## Frontend repository for CLCM3504: CI/CD for Cloud Applications
+# 3504 - Final Exam
 
-### Author: Zhongyi Fu
+Case Scenario: Upgrading TechCo Company's Website with Dockeriza=on
 
-### Background:
-As entry level staff in a technology-focused program, you have been tasked with building a
-simple business website for a fictonal company called "TechCo." The website will consist of
-four webpages: Home, About Us, Services, and Contact Us. Additionally, you will host the
-website on an Amazon EC2 instance, demonstrate continuous integration and continuous
-deployment (CI/CD) using Git, GitHub Actions, and Terraform.
+Gabriel Santos
 
-Design and Develop a Simple Website:
-- The Home page should introduce TechCo's services briefly.
-- The About Us page should provide informa,on about the company's history, mission, and
-team.
-- The Services page should list the services offered by TechCo.
-- The Contact Us page should include a contact form and contact informa,on.
-- Use HTML, CSS, and JavaScript to build the website.
+# Instructions
+
+This project uses AWS EC2 and DockerHub.
+
+## Setting up AWS EC2
+
+* Create a EC2 instance on AWS CONSOLE.
+* Create a KEY PAIR .pem to access the instance.
+* Change the Security Group to allow SSH and HTTP access.
+
+### Installing Docker
+
+On your EC2 instance run the following commands to install the Docker.
+
+```bash
+  sudo yum install -y docker
+```
+
+Make sure the Docker service is running.
+
+```bash
+  sudo sercice docker start
+```
+
+## DockerHub
+
+Create a [DockerHub](https://hub.docker.com/) account if you haven't yet.
+
+## Workflow
+
+To run the workflows you need to create the following secrets on you repository.
+
+Username of DockerHub - `DOCKERHUB_USER`\
+Password of DockerHub - `DOCKERHUB_PWD`\
+Desired Docker Image name - `DOCKERHUB_IMAGE`\
+Desired Container name - `CONTAINER_NAME`\
+Public IP from EC2 - `EC2_PUBLIC_IP`\
+Username of the instance - `EC2_USER`\
+Content of your .pem generated when creating the EC2 - `SSH_PRIVATE_KEY`
+
+## How it work
+After every push to the main branch the GitHub Actions will generate the Docker Image,
+push it to DockerHub and then download the image on EC2 and build the container.
