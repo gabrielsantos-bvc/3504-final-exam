@@ -36,6 +36,8 @@ Create a [DockerHub](https://hub.docker.com/) account if you haven't yet.
 ## Workflow
 
 To run the workflows you need to create the following secrets on you repository.
+To create the secrets go to `Settings` tab of your repository, find the section `Secrets and Variables` and then option `Actions`
+click on `New repository secret`.
 
 Username of DockerHub - `DOCKERHUB_USER`\
 Password of DockerHub - `DOCKERHUB_PWD`\
